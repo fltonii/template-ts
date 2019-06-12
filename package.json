@@ -17,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "validate": "eslint \"**/*.+(ts|tsx|js|jsx)\"",
+    "format": "prettier src \"**/*.+(ts|tsx|js|jsx|json|css)\""
   },
   "eslintConfig": {
     "extends": "react-app"
