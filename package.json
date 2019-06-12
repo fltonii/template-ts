@@ -38,12 +38,20 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "set \"CI=false\" && yarn test"
+      "pre-commit": "set \"CI=false\" && yarn test && lint-staged",
+      "pre-push": "set \"CI=false\" && yarn test"
     }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "husky": "^2.4.1",
+    "lint-staged": "^8.2.0",
     "prettier": "^1.18.2",
     "styled-components": "^4.3.1"
   }
