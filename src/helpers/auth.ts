@@ -1,38 +1,35 @@
 import Cookie from "js-cookie";
+import api from "./api";
 class Auth {
-  async login(cb?: () => void) {
-    // request the api for a cookie
-    // timeout there to simulate async code
-    await new Promise(resolve => {
-      setTimeout(() => {
-        Cookie.set("auth", "mock");
-        cb && cb();
-        resolve();
-      }, 300);
-    });
+  async login(args: { email: string; password: string }, cb?: () => void) {
+    try {
+      const response = await api.login(args);
+      Cookie.set("auth", response.data.token);
+    } catch (error) {
+      throw new Error(error);
+    }
+    cb && cb();
   }
   async logout(cb?: () => void) {
     // request the api for expiring the cookie
-
-    await new Promise(resolve => {
-      setTimeout(() => {
-        Cookie.remove("auth");
-        cb && cb();
-        resolve();
-      }, 300);
-    });
+    try {
+      await api.logout();
+      Cookie.remove("auth");
+      cb && cb();
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   async isLoggedIn() {
     const cookie = await Cookie.get("auth");
     if (cookie) {
-      // request the api for checking cookie
-      await new Promise(resolve => {
-        setTimeout(() => {
-          resolve();
-        }, 300);
-      });
-      return true; // would be response
+      try {
+        let response = await api.verify();
+        return response.data.valid;
+      } catch (error) {
+        throw new Error(error);
+      }
     }
     return false;
   }
