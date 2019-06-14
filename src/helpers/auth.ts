@@ -22,7 +22,7 @@ class Auth {
   }
 
   async isLoggedIn() {
-    const cookie = await Cookie.get("auth");
+    const cookie = Cookie.get("auth");
     if (cookie) {
       try {
         let response = await api.verify();
