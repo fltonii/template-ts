@@ -14,15 +14,15 @@
     "@types/react-router-dom": "^4.3.4",
     "@types/styled-components": "^4.1.16",
     "axios": "^0.19.0",
-    "final-form": "^4.14.1",
+    "final-form": "4.15.0",
     "final-form-material-ui": "^0.3.0",
     "js-cookie": "^2.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-final-form": "^6.1.0",
+    "react-final-form": "6.2.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "typescript": "3.5.1"
+    "typescript": "3.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
