@@ -28,6 +28,7 @@ class Auth {
         let response = await api.verify();
         return response.data.valid;
       } catch (error) {
+        Cookie.remove("auth");
         throw new Error(error);
       }
     }

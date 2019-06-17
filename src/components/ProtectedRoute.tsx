@@ -8,15 +8,19 @@ type iProps = {
   exact: boolean;
 };
 
-const SecuredRoute = ({ component: Component, ...rest }: iProps) => {
+const ProtectedRoute = ({ component: Component, ...rest }: iProps) => {
   const [authorized, setAuthorized] = useState(false);
   const [fetching, setFetching] = useState(false);
   useEffect(() => {
     setFetching(true);
-    auth.isLoggedIn().then(res => {
-      setAuthorized(res);
-      setFetching(false);
-    });
+    try {
+      auth.isLoggedIn().then(res => {
+        setAuthorized(res);
+        setFetching(false);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return fetching ? null : (
@@ -41,4 +45,4 @@ const SecuredRoute = ({ component: Component, ...rest }: iProps) => {
     />
   );
 };
-export default SecuredRoute;
+export default ProtectedRoute;

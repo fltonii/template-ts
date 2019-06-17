@@ -12,7 +12,7 @@ const Login = (props: any) => {
   }
 
   const submit = async (values: Values) => {
-    await auth.login({ email: values["email"], password: values.password });
+    await auth.login({ email: values.email, password: values.password });
   };
 
   return (
