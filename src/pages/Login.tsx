@@ -22,7 +22,7 @@ const Login = (props: any) => {
         return (
           <Container>
             <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-              <h1>Real Life XP</h1>
+              <h1>Project Name</h1>
               <Grid container spacing={8}>
                 <Grid item xs={12}>
                   <Field
